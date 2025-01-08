@@ -1,0 +1,100 @@
+{
+  "menu": [
+    {
+      "category": "Starters",
+      "items": [
+        {
+          "name": "French Fries",
+          "description": "delicious with our home-made gravy",
+          "options": [
+            { "name": "Small", "price": 7.0 },
+            { "name": "Large", "price": 9.0 }
+          ]
+        },
+        {
+          "name": "Cactus Fries",
+          "description": "",
+          "price": 13.0
+        },
+        {
+          "name": "Dry Garlic Ribs",
+          "description": "",
+          "options": [
+            { "name": "No Side", "price": 9.0 },
+            { "name": "With Fries", "price": 13.0 }
+          ]
+        },
+        {
+          "name": "Onion Rings",
+          "description": "thick cut and golden crispy",
+          "price": 8.0
+        },
+        {
+          "name": "3 Cheese Spinach and Artichoke Dip",
+          "description": "a rich and creamy dip baked with cheese and served with our pizza bread",
+          "price": 17.0
+        },
+        {
+          "name": "Boondocks Platter",
+          "description": "",
+          "price": 17.0
+        },
+        {
+          "name": "Pizza Bread",
+          "description": "",
+          "price": 12.0
+        },
+        {
+          "name": "Potato Skins",
+          "description": "topped with sour cream, baked cheese, and bacon bits",
+          "price": 15.0
+        },
+        {
+          "name": "Nachos",
+          "description": "add chicken or beef for $3.00",
+          "price": 14.0
+        },
+        {
+          "name": "Chicken Nuggets",
+          "description": "plump nuggets packed with chicken and yummy side sauces",
+          "price": 8.0
+        },
+        {
+          "name": "Deep Fried Pickles",
+          "description": "pickle skewers breaded and seasoned, then deep fried with dill sauce",
+          "price": 13.0
+        },
+        {
+          "name": "Chicken Quesadilla",
+          "description": "chicken breast, cheese, onions, and green peppers between two flour tortillas, served with salsa and sour cream",
+          "price": 16.0
+        },
+        {
+          "name": "Shrimp Basket",
+          "description": "battered shrimp fried and served over a bed of fries",
+          "price": 10.0
+        },
+        {
+          "name": "Poutine",
+          "description": "golden fries baked with mozzarella cheese and house gravy",
+          "price": 12.0
+        },
+        {
+          "name": "Calamari",
+          "description": "lightly breaded and fried to perfection, served with dill sauce",
+          "price": 17.0
+        },
+        {
+          "name": "Donair Poutine",
+          "description": "baked poutine topped with slices of donair and east coast sweet sauce",
+          "price": 15.0
+        },
+        {
+          "name": "Soup",
+          "description": "",
+          "price": 5.5
+        }
+      ]
+    }
+  ]
+}
