@@ -21,7 +21,7 @@
           "description": "",
           "options": [
             { "name": "No Side", "price": 9.0 },
-            { "name": "With Fries", "price": 13.0 }
+            { "name": "With Side", "price": 13.0 }
           ]
         },
         {
@@ -57,7 +57,10 @@
         {
           "name": "Chicken Nuggets",
           "description": "plump nuggets packed with chicken and yummy side sauces",
-          "price": 8.0
+          "options": [
+            { "name": "No Side", "price": 8.0 },
+            { "name": "With Side", "price": 13.0 }
+          ]
         },
         {
           "name": "Deep Fried Pickles",
@@ -92,7 +95,10 @@
         {
           "name": "Soup",
           "description": "",
-          "price": 5.5
+          "options": [
+            { "name": "Small", "price": 5.5 },
+            { "name": "Large", "price": 7.0 }
+          ]
         }
       ]
     }
