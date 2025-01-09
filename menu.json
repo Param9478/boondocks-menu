@@ -4,6 +4,10 @@
       "category": "Starters",
       "items": [
         {
+          "name": "Wings",
+          "price": 15.0
+        },
+        {
           "name": "French Fries",
           "description": "delicious with our home-made gravy",
           "options": [
@@ -98,6 +102,21 @@
           "options": [
             { "name": "Small", "price": 5.5 },
             { "name": "Large", "price": 7.0 }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Salads",
+      "items": [
+        {
+          "name": "House",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 13.0
+            },
+            { "name": "1/2 Order", "price": 11.0 }
           ]
         }
       ]
