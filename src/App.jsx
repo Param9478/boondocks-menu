@@ -4,6 +4,7 @@ import MenuItem from './components/MenuItem';
 import SelectedItems from './components/SelectedItems';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 const App = () => {
   const [search, setSearch] = useState('');
@@ -41,25 +42,23 @@ const App = () => {
     );
 
     if (existingItemIndex !== -1) {
-      setSelectedItems(
-        selectedItems.map((selectedItem, index) =>
-          index === existingItemIndex
-            ? { ...selectedItem, quantity: selectedItem.quantity + 1 }
-            : selectedItem
-        )
-      );
+      const updatedItems = selectedItems.map((selectedItem, index) => {
+        if (index === existingItemIndex) {
+          return { ...selectedItem, quantity: selectedItem.quantity + 1 };
+        }
+        return selectedItem;
+      });
+      setSelectedItems(updatedItems);
       toast.success(`${item.name} quantity increased!`);
     } else {
-      setSelectedItems([
-        ...selectedItems,
-        {
-          ...item,
-          price: option ? option.price : item.price,
-          quantity: 1,
-          key,
-          option: option ? option.name : null,
-        },
-      ]);
+      const newItem = {
+        ...item,
+        price: option ? option.price : item.price,
+        quantity: 1,
+        key,
+        option: option ? option.name : null,
+      };
+      setSelectedItems([...selectedItems, newItem]);
       toast.success(`${item.name} added to cart!`);
     }
   };
@@ -130,27 +129,45 @@ const App = () => {
   };
 
   return (
-    <div className="bg-gray-200 min-h-screen py-10 px-4 flex flex-col lg:flex-row">
-      <div className="w-full lg:w-3/4 lg:pr-4">
-        <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-8 overflow-auto">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-8">
+    <div className="bg-gray-100 min-h-screen py-10 px-4 flex flex-col lg:flex-row">
+      <div className="max-w-7xl w-full lg:w-3/4 lg:pr-4">
+        <div className=" mx-auto bg-white shadow-2xl rounded-xl p-8 overflow-auto">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-center mb-8 bg-gradient-to-r from-teal-400 to-teal-600 text-white py-4 rounded-lg shadow-md">
             The Boondocks Grill Menu
           </h1>
-
-          <input
-            type="text"
-            placeholder="Search menu..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            onBlur={() => document.activeElement.blur()}
-            className="w-full px-4 py-2 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-pink-300 transition duration-200 ease-in-out transform hover:scale-105"
-          />
-
+          <div className="relative w-full">
+            <input
+              type="text"
+              placeholder="Search menu..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onBlur={() => setTimeout(() => document.activeElement.blur(), 50)} // Ensures smooth blur
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.target.blur(); // Dismiss keyboard on Enter key
+                }
+              }}
+              className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg bg-gray-50 text-gray-800 
+     placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 
+     focus:border-yellow-500 transition duration-200 ease-in-out shadow-md"
+            />
+            <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+              <FaSearch className="h-5 w-5" />
+            </span>
+            {search && (
+              <button
+                onClick={() => setSearch('')}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                <FaTimes className="h-5 w-5" />
+              </button>
+            )}
+          </div>
           {filteredMenu.map((category, index) => (
-            <div key={index} className="mb-8">
+            <div key={index} className="mt-8">
               <h2
                 onClick={() => toggleCategory(index)}
-                className="text-2xl font-bold text-gray-800 border-b-4 border-pink-500 pb-2 mb-4 cursor-pointer flex items-center justify-between transition duration-200 ease-in-out transform hover:scale-105"
+                className="text-2xl font-bold text-gray-900 border-b-4 border-teal-500 pb-2 mb-4 cursor-pointer flex items-center justify-between transition duration-200 ease-in-out transform hover:scale-105"
               >
                 {category.category}
                 <span
@@ -176,6 +193,7 @@ const App = () => {
                         item={item}
                         addItemToBill={addItemToBill}
                         removeItemFromBill={removeItemFromBill}
+                        deleteItemFromBill={deleteItemFromBill}
                         getItemQuantity={getItemQuantity}
                         selectedOptions={selectedOptions}
                         setSelectedOptions={setSelectedOptions}
@@ -203,7 +221,7 @@ const App = () => {
 
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
@@ -211,7 +229,7 @@ const App = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="colored"
       />
     </div>
   );

@@ -1,118 +1,128 @@
 import PropTypes from 'prop-types';
+import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 
 const SelectedItems = ({
   selectedItems,
   addItemToBill,
   removeItemFromBill,
-  // deleteItemFromBill,
+  deleteItemFromBill,
   calculateTotal,
   updateSelectedItems,
 }) => {
   const { total, savings } = calculateTotal(selectedItems);
 
   const handleAddonChange = (itemKey, newAddon) => {
-    const updatedItems = selectedItems.map((item) => {
-      if (item.key === itemKey) {
-        const oldAddonPrice = item.addon ? item.addon.price : 0;
-        return {
-          ...item,
-          addon: newAddon,
-          price: item.price - oldAddonPrice + newAddon.price,
-        };
-      }
-      return item;
-    });
+    const updatedItems = selectedItems.map((item) =>
+      item.key === itemKey
+        ? {
+            ...item,
+            addon: newAddon,
+            price: item.price - (item.addon?.price || 0) + newAddon.price,
+          }
+        : item
+    );
     updateSelectedItems(updatedItems);
   };
 
+  const renderAddons = (item) => {
+    if (item.type === 'salad') {
+      return [
+        { name: 'No Addition', price: 0 },
+        { name: 'Grilled Chicken', price: 4 },
+        { name: 'Pepper Chicken', price: 4 },
+        { name: 'Crispy Chicken', price: 4 },
+        { name: 'Seafood', price: 4 },
+        { name: 'Donair', price: 4 },
+      ];
+    } else if (item.type === 'pasta') {
+      return [
+        { name: 'No Addition', price: 0 },
+        { name: 'Meatballs', price: 4 },
+      ];
+    }
+    return [];
+  };
+
+  const clearAllItems = () => {
+    updateSelectedItems([]);
+  };
+
+  const handleCheckout = () => {
+    // Scroll to the top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    clearAllItems();
+  };
+
   return (
-    <div className="w-full lg:w-1/4 lg:pl-4 bg-gray-50 p-6 rounded-lg shadow-inner">
-      <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+    <div className="w-full lg:w-2/5 xl:w-1/3 bg-gray-50 p-6 rounded-lg shadow-md">
+      <h2 className="text-3xl font-semibold text-teal-800 mb-6 text-center">
         Selected Items
       </h2>
       {selectedItems.length > 0 ? (
-        <ul>
+        <ul className="space-y-6">
           {selectedItems.map((item) => (
-            <li key={item.key} className="mb-4">
-              <div className="flex justify-between items-center mb-2">
-                <span>
-                  {item.name} {item.option ? `- ${item.option}` : ''} (x
-                  {item.quantity})
-                </span>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
-                <div className="flex items-center">
+            <li
+              key={item.key}
+              className="p-3 bg-white rounded-lg shadow-lg border border-gray-200 flex flex-col gap-4"
+            >
+              <div className="flex justify-between items-center">
+                <div className="flex-1">
+                  <span className="text-lg font-medium text-gray-700 block">
+                    {item.name} {item.option ? `- ${item.option}` : ''} (x
+                    {item.quantity})
+                  </span>
+                  <span className="text-xl font-semibold text-gray-900 block">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </span>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex items-center space-x-3">
                   <button
                     onClick={() =>
-                      addItemToBill(item, {
-                        name: item.option,
-                        price: item.price,
-                      })
+                      addItemToBill(
+                        { ...item, key: item.key },
+                        item.option
+                          ? { name: item.option, price: item.price }
+                          : null
+                      )
                     }
-                    className="ml-4 bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600 transition"
+                    className="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition transform hover:scale-110"
                   >
-                    +
+                    <FaPlus />
                   </button>
                   <button
                     onClick={() => removeItemFromBill(item)}
-                    className="ml-2 bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600 transition"
+                    className="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition transform hover:scale-110"
                   >
-                    -
+                    <FaMinus />
                   </button>
-                  {/* <button
+                  <button
                     onClick={() => deleteItemFromBill(item)}
-                    className="ml-2 bg-gray-500 text-white px-2 py-1 rounded-md hover:bg-gray-600 transition"
+                    className="bg-gray-500 text-white p-3 rounded-full hover:bg-gray-600 transition transform hover:scale-110"
                   >
-                    Remove
-                  </button> */}
+                    <FaTrashAlt />
+                  </button>
                 </div>
               </div>
-              {item.type === 'salad' && (
-                <div className="flex flex-col">
-                  <label className="mb-2 text-sm font-semibold text-gray-700">
-                    Additions:
+
+              {/* Addons */}
+              {renderAddons(item).length > 0 && (
+                <div className="w-full mt-2">
+                  <label className="text-sm font-semibold text-gray-700 block mb-2">
+                    {item.type === 'salad' ? 'Add Protein:' : 'Add Meatballs:'}
                   </label>
                   <select
                     onChange={(e) =>
                       handleAddonChange(item.key, JSON.parse(e.target.value))
                     }
-                    className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
+                    className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-teal-300 transition ease-in-out w-full"
                   >
                     <option disabled value="">
-                      Addition
+                      Select an addition
                     </option>
-                    {[
-                      { name: 'No Addition', price: 0.0 },
-                      { name: 'Grilled Chicken', price: 4.0 },
-                      { name: 'Pepper Chicken', price: 4.0 },
-                      { name: 'Crispy Chicken', price: 4.0 },
-                      { name: 'Seafood', price: 4.0 },
-                      { name: 'Donair', price: 4.0 },
-                    ].map((protein, i) => (
-                      <option key={i} value={JSON.stringify(protein)}>
-                        {protein.name} - ${protein.price.toFixed(2)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              )}
-              {item.type === 'pasta' && (
-                <div className="flex flex-col mt-4">
-                  <label className="mb-2 text-sm font-semibold text-gray-700">
-                    Add Meatballs:
-                  </label>
-                  <select
-                    onChange={(e) =>
-                      handleAddonChange(item.key, JSON.parse(e.target.value))
-                    }
-                    className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
-                  >
-                    <option disabled value="">
-                      Select an addon
-                    </option>
-                    {[
-                      { name: 'No Addition', price: 0.0 },
-                      { name: 'Meatballs', price: 4.0 },
-                    ].map((addon, i) => (
+                    {renderAddons(item).map((addon, i) => (
                       <option key={i} value={JSON.stringify(addon)}>
                         {addon.name} - ${addon.price.toFixed(2)}
                       </option>
@@ -124,16 +134,41 @@ const SelectedItems = ({
           ))}
         </ul>
       ) : (
-        <p className="text-gray-600">No items selected.</p>
+        <p className="text-gray-600 text-center">No items selected.</p>
       )}
-      <div className="mt-6 text-2xl font-bold text-gray-900">
-        Total: ${total}
-      </div>
-      {savings > 0 && (
-        <div className="mt-2 text-lg font-semibold text-green-600">
-          Great! You saved ${savings} by ordering multiple sets of wings!
+
+      {/* Total and Savings */}
+      <div className="mt-8 p-6 bg-gradient-to-r from-teal-100 to-teal-200 rounded-lg shadow-md border border-teal-300">
+        <div className="flex justify-between items-center text-xl font-bold text-teal-700">
+          <span>Total:</span>
+          <span className="text-teal-900">${total}</span>
         </div>
-      )}
+
+        {savings > 0 && (
+          <div className="mt-4 p-4 bg-teal-50 border-l-4 border-teal-400 rounded-md text-teal-700">
+            <p className="text-base font-medium">
+              🎉 Great! You saved{' '}
+              <span className="font-semibold">${savings.toFixed(2)}</span>
+              by ordering multiple sets of wings!
+            </p>
+          </div>
+        )}
+      </div>
+      {/* Clear All Button */}
+      <div className="mt-6 text-center">
+        {(selectedItems.length > 0 || total > 0) && (
+          <div className="mt-6 text-center">
+            {(selectedItems.length > 0 || total > 0) && (
+              <button
+                onClick={handleCheckout}
+                className="bg-teal-600 text-white p-4 rounded-lg hover:bg-teal-700 transition"
+              >
+                Checkout
+              </button>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
