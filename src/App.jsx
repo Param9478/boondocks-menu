@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const [search, setSearch] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
-  const [gravyDipOptions, setGravyDipOptions] = useState({});
   const [openCategories, setOpenCategories] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
 
@@ -59,7 +58,6 @@ const App = () => {
           quantity: 1,
           key,
           option: option ? option.name : null,
-          protein: option?.protein || null,
         },
       ]);
       toast.success(`${item.name} added to cart!`);
@@ -101,7 +99,11 @@ const App = () => {
     return item ? item.quantity : 0;
   };
 
-  const calculateTotal = (selectedItems, gravyDipOptions) => {
+  const updateSelectedItems = (updatedItems) => {
+    setSelectedItems(updatedItems);
+  };
+
+  const calculateTotal = (selectedItems) => {
     let total = 0;
     let savings = 0;
 
@@ -114,27 +116,17 @@ const App = () => {
       } else {
         total += item.price * item.quantity;
       }
-
-      if (gravyDipOptions[item.key]) {
-        total += 2 * gravyDipOptions[item.key];
-      }
-
-      if (gravyDipOptions['default']) {
-        total += 2 * gravyDipOptions['default'];
-      }
     });
 
     return { total: total.toFixed(2), savings };
   };
 
   const toggleCategory = (categoryIndex) => {
-    if (openCategories.includes(categoryIndex)) {
-      setOpenCategories(
-        openCategories.filter((index) => index !== categoryIndex)
-      );
-    } else {
-      setOpenCategories([...openCategories, categoryIndex]);
-    }
+    setOpenCategories((prevOpenCategories) =>
+      prevOpenCategories.includes(categoryIndex)
+        ? prevOpenCategories.filter((index) => index !== categoryIndex)
+        : [...prevOpenCategories, categoryIndex]
+    );
   };
 
   return (
@@ -150,7 +142,7 @@ const App = () => {
             placeholder="Search menu..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            onBlur={() => document.activeElement.blur()} // Add this line to blur the input on change
+            onBlur={() => document.activeElement.blur()}
             className="w-full px-4 py-2 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-pink-300 transition duration-200 ease-in-out transform hover:scale-105"
           />
 
@@ -202,12 +194,11 @@ const App = () => {
       </div>
       <SelectedItems
         selectedItems={selectedItems}
-        gravyDipOptions={gravyDipOptions}
-        setGravyDipOptions={setGravyDipOptions}
         addItemToBill={addItemToBill}
         removeItemFromBill={removeItemFromBill}
         deleteItemFromBill={deleteItemFromBill}
         calculateTotal={calculateTotal}
+        updateSelectedItems={updateSelectedItems}
       />
 
       <ToastContainer

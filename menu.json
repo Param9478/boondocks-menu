@@ -5,10 +5,12 @@
       "items": [
         {
           "name": "Wings",
+          "type": "starter",
           "price": 15.0
         },
         {
           "name": "French Fries",
+          "type": "starter",
           "description": "delicious with our home-made gravy",
           "options": [
             { "name": "Small", "price": 7.0 },
@@ -17,11 +19,13 @@
         },
         {
           "name": "Cactus Fries",
+          "type": "starter",
           "description": "",
           "price": 13.0
         },
         {
           "name": "Dry Garlic Ribs",
+          "type": "starter",
           "description": "",
           "options": [
             { "name": "No Side", "price": 9.0 },
@@ -30,36 +34,43 @@
         },
         {
           "name": "Onion Rings",
+          "type": "starter",
           "description": "thick cut and golden crispy",
           "price": 8.0
         },
         {
           "name": "3 Cheese Spinach and Artichoke Dip",
+          "type": "starter",
           "description": "a rich and creamy dip baked with cheese and served with our pizza bread",
           "price": 17.0
         },
         {
           "name": "Boondocks Platter",
+          "type": "starter",
           "description": "",
           "price": 17.0
         },
         {
           "name": "Pizza Bread",
+          "type": "starter",
           "description": "",
           "price": 12.0
         },
         {
           "name": "Potato Skins",
+          "type": "starter",
           "description": "topped with sour cream, baked cheese, and bacon bits",
           "price": 15.0
         },
         {
           "name": "Nachos",
+          "type": "starter",
           "description": "add chicken or beef for $3.00",
           "price": 14.0
         },
         {
           "name": "Chicken Nuggets",
+          "type": "starter",
           "description": "plump nuggets packed with chicken and yummy side sauces",
           "options": [
             { "name": "No Side", "price": 8.0 },
@@ -68,36 +79,43 @@
         },
         {
           "name": "Deep Fried Pickles",
+          "type": "starter",
           "description": "pickle skewers breaded and seasoned, then deep fried with dill sauce",
           "price": 13.0
         },
         {
           "name": "Chicken Quesadilla",
+          "type": "starter",
           "description": "chicken breast, cheese, onions, and green peppers between two flour tortillas, served with salsa and sour cream",
           "price": 16.0
         },
         {
           "name": "Shrimp Basket",
+          "type": "starter",
           "description": "battered shrimp fried and served over a bed of fries",
           "price": 10.0
         },
         {
           "name": "Poutine",
+          "type": "starter",
           "description": "golden fries baked with mozzarella cheese and house gravy",
           "price": 12.0
         },
         {
           "name": "Calamari",
+          "type": "starter",
           "description": "lightly breaded and fried to perfection, served with dill sauce",
           "price": 17.0
         },
         {
           "name": "Donair Poutine",
+          "type": "starter",
           "description": "baked poutine topped with slices of donair and east coast sweet sauce",
           "price": 15.0
         },
         {
           "name": "Soup",
+          "type": "starter",
           "description": "",
           "options": [
             { "name": "Small", "price": 5.5 },
@@ -110,7 +128,9 @@
       "category": "Salads",
       "items": [
         {
-          "name": "House",
+          "name": "House Salad",
+          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "type": "salad",
           "options": [
             {
               "name": "Full Order",
@@ -118,6 +138,136 @@
             },
             { "name": "1/2 Order", "price": 11.0 }
           ]
+        },
+        {
+          "name": "Caesar Salad",
+          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "type": "salad",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 13.0
+            },
+            { "name": "1/2 Order", "price": 11.0 }
+          ]
+        },
+        {
+          "name": "Greek Salad",
+          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "type": "salad",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 13.0
+            },
+            { "name": "1/2 Order", "price": 11.0 }
+          ]
+        },
+        {
+          "name": "Fattoush Salad",
+          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "type": "salad",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 13.0
+            },
+            { "name": "1/2 Order", "price": 11.0 }
+          ]
+        },
+        {
+          "name": "Zesty Calamari Salad",
+          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "type": "salad",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 13.0
+            },
+            { "name": "1/2 Order", "price": 11.0 }
+          ]
+        },
+        {
+          "name": "Cranberry Pecan Salad",
+          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "type": "salad",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 13.0
+            },
+            { "name": "1/2 Order", "price": 11.0 }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Calzones",
+      "items": [
+        {
+          "name": "Meatza Pizza Calzone",
+          "description": "ham, pepperoni, bacon, italian sausage cheese & pizza sauce",
+          "price": 12.0,
+          "type": "calzone"
+        },
+        {
+          "name": "Bacon Cheese Burger Calzone",
+          "description": "bacon, beef, mushroom, mozza-cheddar cheese & pizza sauce",
+          "price": 12.0,
+          "type": "calzone"
+        },
+        {
+          "name": "Chicken Calzone",
+          "description": "grilled chicken, onions, green pepper, mozza cheese & dill sauce",
+          "price": 12.0,
+          "type": "calzone"
+        },
+        {
+          "name": "Buffalo Chicken Calzone",
+          "description": "chicken breast tossed in frank's, bacon, onions & tomatoes with a ranch base",
+          "price": 12.0,
+          "type": "calzone"
+        },
+        {
+          "name": "Donair Calzone",
+          "description": "spiced beef donair, caesar sauce, onions, tomatoes & mozza-cheddar",
+          "price": 12.0,
+          "type": "calzone"
+        }
+      ]
+    },
+    {
+      "category": "Pastas",
+      "items": [
+        {
+          "name": "Home Style Baked Lasagna",
+          "description": "topped with meat sauce baked with cheese. Top it off with meatballs for an additional $3.00",
+          "price": 16.0,
+          "type": "pasta"
+        },
+        {
+          "name": "Spaghetti",
+          "description": "topped with meat sauce baked with cheese. Top it off with meatballs for an additional $3.00",
+          "price": 16.0,
+          "type": "pasta"
+        },
+        {
+          "name": "Baked Seafood Lasagna",
+          "description": "served with our alfredo sauce, crab and shrimp",
+          "price": 18.0,
+          "type": "pasta"
+        },
+        {
+          "name": "Chicken Mushroom Fettuccini",
+          "description": "served with our alfredo sauce",
+          "price": 18.0,
+          "type": "pasta"
+        },
+        {
+          "name": "Creamy Vegetarian Spaghetti",
+          "description": "sauted mushrooms, red onions, green peppers and red peppers in an alfredo marinara sauce laid over a bed of spaghetti",
+          "price": 18.0,
+          "type": "pasta"
         }
       ]
     }
