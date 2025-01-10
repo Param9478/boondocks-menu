@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 const MenuItem = ({
   item,
@@ -8,11 +9,27 @@ const MenuItem = ({
   removeItemFromBill,
   getItemQuantity,
 }) => {
+  const [proteinOption, setProteinOption] = useState('');
+
   const itemKey = item.options
     ? `${item.name}-${selectedOptions[item.name]?.name}`
     : item.name;
 
   const quantity = getItemQuantity(itemKey);
+
+  const handleAddToCart = () => {
+    const selectedOption = selectedOptions[item.name];
+    if (selectedOption) {
+      let option = { ...selectedOption };
+      if (proteinOption) {
+        option.protein = proteinOption;
+        option.price += 4.0; // Add the price for protein
+      }
+      addItemToBill(item, option);
+    } else {
+      addItemToBill(item, { name: item.name, price: item.price });
+    }
+  };
 
   return (
     <div className="p-6 border border-gray-300 rounded-lg hover:shadow-2xl transition-shadow bg-white">
@@ -28,7 +45,6 @@ const MenuItem = ({
               ...selectedOptions,
               [item.name]: selectedOption,
             });
-            addItemToBill(item, selectedOption); // Add item to cart when option is selected
           }}
           className="mt-4 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
         >
@@ -41,6 +57,19 @@ const MenuItem = ({
         </select>
       ) : (
         <p className="text-gray-900 font-bold mt-4">${item.price.toFixed(2)}</p>
+      )}
+      {item.category === 'Salads' && (
+        <select
+          onChange={(e) => setProteinOption(e.target.value)}
+          className="mt-4 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
+        >
+          <option value="">Select a protein</option>
+          {item.proteins.map((protein, i) => (
+            <option key={i} value={protein.name}>
+              {protein.name} - ${protein.price.toFixed(2)}
+            </option>
+          ))}
+        </select>
       )}
       {quantity > 0 ? (
         <div className="mt-4 flex items-center">
@@ -63,7 +92,7 @@ const MenuItem = ({
       ) : (
         <div className="mt-4 flex items-center">
           <button
-            onClick={() => addItemToBill(item, selectedOptions[item.name])}
+            onClick={handleAddToCart}
             className={`text-white px-2 py-1 rounded-md transition ${
               item.options && !selectedOptions[item.name]
                 ? 'bg-gray-400 cursor-not-allowed'

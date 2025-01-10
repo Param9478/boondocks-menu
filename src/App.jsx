@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import menuData from '../menu.json';
 import MenuItem from './components/MenuItem';
 import SelectedItems from './components/SelectedItems';
@@ -9,7 +9,7 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [selectedItems, setSelectedItems] = useState([]);
   const [gravyDipOptions, setGravyDipOptions] = useState({});
-  const [openCategory, setOpenCategory] = useState(null);
+  const [openCategories, setOpenCategories] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
 
   const filteredMenu = menuData.menu.map((category) => ({
@@ -19,13 +19,23 @@ const App = () => {
     ),
   }));
 
-  const addItemToBill = (item, option) => {
-    // Check if the item requires an option but none is selected
-    if (item.options && item.options.length > 0 && !option) {
-      toast.error('Please select an option before adding to cart.');
-      return;
+  useEffect(() => {
+    if (search) {
+      const categoriesToOpen = menuData.menu
+        .map((category, index) => {
+          const items = category.items.filter((item) =>
+            item.name.toLowerCase().includes(search.toLowerCase())
+          );
+          return items.length > 0 ? index : null;
+        })
+        .filter((index) => index !== null);
+      setOpenCategories(categoriesToOpen);
+    } else {
+      setOpenCategories([]); // Close all categories when there's no search query
     }
+  }, [search]);
 
+  const addItemToBill = (item, option) => {
     const key = option ? `${item.name}-${option.name}` : item.name;
     const existingItemIndex = selectedItems.findIndex(
       (selectedItem) => selectedItem.key === key
@@ -70,12 +80,12 @@ const App = () => {
             : selectedItem
         )
       );
-      toast.success(`${item.name} quantity decreased!`);
+      toast.error(`${item.name} quantity decreased!`);
     } else {
       setSelectedItems(
         selectedItems.filter((selectedItem) => selectedItem.key !== key)
       );
-      toast.success(`${item.name} removed from cart!`);
+      toast.error(`${item.name} removed from cart!`);
     }
   };
 
@@ -83,7 +93,7 @@ const App = () => {
     setSelectedItems(
       selectedItems.filter((selectedItem) => selectedItem.key !== item.key)
     );
-    toast.success(`${item.name} completely removed from cart!`);
+    toast.error(`${item.name} completely removed from cart!`);
   };
 
   const getItemQuantity = (key) => {
@@ -91,23 +101,26 @@ const App = () => {
     return item ? item.quantity : 0;
   };
 
-  const calculateTotal = () => {
+  const calculateTotal = (selectedItems, gravyDipOptions) => {
     let total = 0;
     let savings = 0;
 
     selectedItems.forEach((item) => {
-      if (item.name === 'Wings' && item.option === '10 Wings') {
-        const setsOfTwenty = Math.floor(item.quantity / 2);
-        const remainingTens = item.quantity % 2;
-        total += setsOfTwenty * 28 + remainingTens * 15;
-        savings += setsOfTwenty * 2;
+      if (item.name === 'Wings') {
+        const setsOfTwo = Math.floor(item.quantity / 2);
+        const remainingWings = item.quantity % 2;
+        total += setsOfTwo * 28 + remainingWings * 15;
+        savings += setsOfTwo * 2; // Calculate savings
       } else {
         total += item.price * item.quantity;
       }
 
-      // Add the cost of gravy/dip
       if (gravyDipOptions[item.key]) {
         total += 2 * gravyDipOptions[item.key];
+      }
+
+      if (gravyDipOptions['default']) {
+        total += 2 * gravyDipOptions['default'];
       }
     });
 
@@ -115,14 +128,20 @@ const App = () => {
   };
 
   const toggleCategory = (categoryIndex) => {
-    setOpenCategory(openCategory === categoryIndex ? null : categoryIndex);
+    if (openCategories.includes(categoryIndex)) {
+      setOpenCategories(
+        openCategories.filter((index) => index !== categoryIndex)
+      );
+    } else {
+      setOpenCategories([...openCategories, categoryIndex]);
+    }
   };
 
   return (
     <div className="bg-gray-200 min-h-screen py-10 px-4 flex flex-col lg:flex-row">
       <div className="w-full lg:w-3/4 lg:pr-4">
         <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-xl p-8 overflow-auto">
-          <h1 className="text-5xl font-extrabold text-center text-gray-800 mb-8">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-8">
             The Boondocks Grill Menu
           </h1>
 
@@ -131,6 +150,7 @@ const App = () => {
             placeholder="Search menu..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onBlur={() => document.activeElement.blur()} // Add this line to blur the input on change
             className="w-full px-4 py-2 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-pink-300 transition duration-200 ease-in-out transform hover:scale-105"
           />
 
@@ -143,7 +163,7 @@ const App = () => {
                 {category.category}
                 <span
                   className={`transform transition-transform duration-300 ${
-                    openCategory === index ? 'rotate-180' : 'rotate-0'
+                    openCategories.includes(index) ? 'rotate-180' : 'rotate-0'
                   }`}
                 >
                   ▼
@@ -151,7 +171,7 @@ const App = () => {
               </h2>
               <div
                 className={`overflow-auto transition-all duration-500 ${
-                  openCategory === index
+                  openCategories.includes(index)
                     ? 'h-auto opacity-100'
                     : 'h-0 opacity-0'
                 }`}
@@ -191,7 +211,7 @@ const App = () => {
       />
 
       <ToastContainer
-        position="top-right"
+        position="top-center"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}

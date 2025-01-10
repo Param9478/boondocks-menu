@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import GravyDip from './GravyDip';
+// import GravyDip from './GravyDip';
 
 const SelectedItems = ({
   selectedItems,
@@ -7,18 +7,18 @@ const SelectedItems = ({
   removeItemFromBill,
   deleteItemFromBill,
   gravyDipOptions,
-  setGravyDipOptions,
+  // setGravyDipOptions,
   calculateTotal,
 }) => {
   const { total, savings } = calculateTotal(selectedItems, gravyDipOptions);
 
-  const updateTotal = (newGravyDipOptions) => {
-    setGravyDipOptions(newGravyDipOptions);
-    calculateTotal(selectedItems, newGravyDipOptions);
-  };
+  // const updateTotal = (newGravyDipOptions) => {
+  //   setGravyDipOptions(newGravyDipOptions);
+  //   calculateTotal(selectedItems, newGravyDipOptions);
+  // };
 
   return (
-    <div className="w-full lg:w-1/4 lg:pl-4 bg-gray-50 p-6 rounded-lg shadow-inner">
+    <div className="w-full lg:w-1/3 lg:pl-4 bg-gray-50 p-6 rounded-lg shadow-inner">
       <h2 className="text-3xl font-semibold text-gray-800 mb-4">
         Selected Items
       </h2>
@@ -37,10 +37,10 @@ const SelectedItems = ({
               <div className="flex items-center">
                 <button
                   onClick={() =>
-                    addItemToBill(item, {
-                      name: item.option,
-                      price: item.price,
-                    })
+                    addItemToBill(
+                      item,
+                      item.option && { name: item.option, price: item.price }
+                    )
                   }
                   className="ml-4 bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600 transition"
                 >
@@ -65,7 +65,7 @@ const SelectedItems = ({
       ) : (
         <p className="text-gray-600">No items selected.</p>
       )}
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <h3 className="text-xl font-semibold text-gray-800 mb-4">
           Add Gravy or Dip
         </h3>
@@ -75,7 +75,7 @@ const SelectedItems = ({
           setGravyDipOptions={setGravyDipOptions}
           updateTotal={updateTotal}
         />
-      </div>
+      </div> */}
       <div className="mt-6 text-2xl font-bold text-gray-900">
         Total: ${total}
       </div>
