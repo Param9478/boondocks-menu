@@ -1,0 +1,37 @@
+@media print {
+    /* Hide everything except the receipt container */
+    body * {
+      visibility: hidden;
+    }
+  
+    .receipt-container, .receipt-container * {
+      visibility: visible;
+    }
+  
+    .receipt-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%; /* Ensure receipt takes up full page */
+      page-break-inside: avoid; /* Avoid breaking inside the container */
+      page-break-before: auto; /* Ensure the container starts a new page if needed */
+      page-break-after: auto; /* Ensure the container ends cleanly */
+    }
+  
+    /* Remove any default print headers and footers */
+    @page {
+      margin: 0;
+    }
+  
+    /* Ensure the printed content fits on one page */
+    html, body {
+      height: 100%; /* Ensure the body height fits the printed content */
+      overflow: hidden; /* Hide overflow to prevent extra pages */
+    }
+  
+    /* Specific targeting for any unwanted elements */
+    header, footer, .unwanted-element {
+      display: none;
+    }
+  }
+  

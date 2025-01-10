@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
+import RenderReceipt from './RenderReceipt'; // Import the new RenderReceipt component
 
 const SelectedItems = ({
   selectedItems,
@@ -43,15 +45,21 @@ const SelectedItems = ({
     return [];
   };
 
+  const [showReceipt, setShowReceipt] = useState(false);
+
   const clearAllItems = () => {
     updateSelectedItems([]);
+  };
+  const handleClear = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    clearAllItems();
+    setShowReceipt(false);
   };
 
   const handleCheckout = () => {
     // Scroll to the top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    clearAllItems();
+    setShowReceipt(true);
   };
 
   return (
@@ -154,18 +162,38 @@ const SelectedItems = ({
           </div>
         )}
       </div>
+
+      {/* Render Receipt */}
+      {showReceipt && (
+        <RenderReceipt
+          total={total}
+          savings={savings}
+          selectedItems={selectedItems}
+        />
+      )}
       {/* Clear All Button */}
-      <div className="mt-6 text-center">
+      <div className="mt-8 text-center">
         {(selectedItems.length > 0 || total > 0) && (
-          <div className="mt-6 text-center">
-            {(selectedItems.length > 0 || total > 0) && (
+          <div className="mt-6 flex flex-col items-center space-y-4">
+            {/* Receipt Button */}
+            {showReceipt ? (
+              ''
+            ) : (
               <button
                 onClick={handleCheckout}
-                className="bg-teal-600 text-white p-4 rounded-lg hover:bg-teal-700 transition"
+                className="bg-teal-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-teal-700 transition transform hover:scale-105"
               >
-                Checkout
+                Show Receipt
               </button>
             )}
+
+            {/* Checkout Button */}
+            <button
+              onClick={handleClear}
+              className="bg-teal-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-teal-700 transition transform hover:scale-105"
+            >
+              Checkout
+            </button>
           </div>
         )}
       </div>
