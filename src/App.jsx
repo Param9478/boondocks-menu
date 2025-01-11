@@ -57,6 +57,7 @@ const App = () => {
     setTimeout(() => {
       updateSelectedItems([]);
       setShowReceipt(false);
+      setSearch('');
       setOpenCategories([]); // Close all toggles
     }, 2000); // Wait for 2 seconds before clearing the cart and closing toggles
   };
