@@ -43,13 +43,13 @@ const MenuItem = ({
           <option value="">Select an option</option>
           {item.options.map((option, i) => (
             <option key={i} value={JSON.stringify(option)}>
-              {option.name} - ${option.price.toFixed(2)}
+              {option.name} - ${option.price}
             </option>
           ))}
         </select>
       )}
       {!item.options && (
-        <p className="text-gray-900 font-bold mt-4">${item.price.toFixed(2)}</p>
+        <p className="text-gray-900 font-bold mt-4">${item.price}</p>
       )}
       <div className="mt-4 flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -72,6 +72,14 @@ const MenuItem = ({
               >
                 <FaPlus />
               </button>
+              <button
+                onClick={() =>
+                  deleteItemFromBill({ name: item.name, key: itemKey })
+                }
+                className="bg-gray-500 text-white p-3 rounded-full hover:bg-gray-600 transition transform hover:scale-110"
+              >
+                <FaTrashAlt />
+              </button>
             </>
           ) : (
             <button
@@ -87,12 +95,6 @@ const MenuItem = ({
             </button>
           )}
         </div>
-        <button
-          onClick={() => deleteItemFromBill({ name: item.name, key: itemKey })}
-          className="bg-gray-500 text-white p-3 rounded-full hover:bg-gray-600 transition transform hover:scale-110"
-        >
-          <FaTrashAlt />
-        </button>
       </div>
     </div>
   );

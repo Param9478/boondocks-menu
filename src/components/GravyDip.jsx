@@ -32,7 +32,7 @@ const GravyDip = ({
     <div className="flex items-center mt-4">
       <button
         onClick={handleAddGravyDip}
-        className="ml-2 bg-yellow-500 text-white px-2 py-1 rounded-md hover:bg-yellow-600 transition"
+        className="ml-2 bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600 transition"
       >
         Add Gravy/Dip
       </button>

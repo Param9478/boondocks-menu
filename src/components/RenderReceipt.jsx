@@ -10,7 +10,7 @@ const RenderReceipt = ({ total, savings, selectedItems }) => {
 
   return (
     <div className="receipt-container mt-8 p-6 bg-white rounded-lg shadow-lg border border-gray-200">
-      <h3 className="text-2xl font-semibold text-teal-800 mb-6 text-center">
+      <h3 className="text-2xl font-semibold text-blue-800 mb-6 text-center">
         Receipt
       </h3>
 
@@ -35,14 +35,14 @@ const RenderReceipt = ({ total, savings, selectedItems }) => {
         ))}
       </ul>
 
-      <div className="mt-6 p-4 bg-gradient-to-r from-teal-100 to-teal-200 rounded-lg shadow-md text-teal-700">
+      <div className="mt-6 p-4 bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg shadow-md text-blue-700">
         <div className="flex justify-between text-xl font-bold">
           <span>Total Before Savings:</span>
           <span>{formatPrice(total)}</span>
         </div>
 
         {savings > 0 && (
-          <div className="mt-4 p-4 bg-teal-50 border-l-4 border-teal-400 rounded-md text-teal-700">
+          <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-md text-blue-700">
             <p className="text-base font-medium">
               🎉 Great! You saved{' '}
               <span className="font-semibold">{formatPrice(savings)}</span> by
@@ -63,7 +63,7 @@ const RenderReceipt = ({ total, savings, selectedItems }) => {
       <div className="mt-6 text-center">
         <button
           onClick={handlePrint}
-          className="bg-teal-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-teal-700 transition"
+          className="bg-blue-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-blue-700 transition"
         >
           Print Receipt
         </button>
