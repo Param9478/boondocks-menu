@@ -161,16 +161,12 @@ const SelectedItems = ({
         {(selectedItems.length > 0 || total > 0) && (
           <div className="mt-6 flex flex-col items-center space-y-4">
             {/* Receipt Button */}
-            {showReceipt ? (
-              ''
-            ) : (
-              <button
-                onClick={() => setShowReceipt(true)}
-                className="bg-blue-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-blue-700 transition transform hover:scale-105"
-              >
-                Show Receipt
-              </button>
-            )}
+            <button
+              onClick={() => setShowReceipt(!showReceipt)}
+              className="bg-blue-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-blue-700 transition transform hover:scale-105"
+            >
+              {!showReceipt ? 'Show Receipt' : 'Hide Receipt'}
+            </button>
 
             {/* Checkout Button */}
             <button
