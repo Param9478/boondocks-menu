@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 import RenderReceipt from './RenderReceipt'; // Import the new RenderReceipt component
@@ -9,62 +8,48 @@ const SelectedItems = ({
   removeItemFromBill,
   deleteItemFromBill,
   calculateTotal,
-  updateSelectedItems,
+  handleCheckout,
+  showReceipt,
+  setShowReceipt,
 }) => {
   const { total, savings } = calculateTotal(selectedItems);
 
-  const handleAddonChange = (itemKey, newAddon) => {
-    const updatedItems = selectedItems.map((item) =>
-      item.key === itemKey
-        ? {
-            ...item,
-            addon: newAddon,
-            price: item.price - (item.addon?.price || 0) + newAddon.price,
-          }
-        : item
-    );
-    updateSelectedItems(updatedItems);
-  };
+  // const handleAddonChange = (itemKey, newAddon) => {
+  //   const updatedItems = selectedItems.map((item) =>
+  //     item.key === itemKey
+  //       ? {
+  //           ...item,
+  //           addon: newAddon,
+  //           price: item.price - (item.addon?.price || 0) + newAddon.price,
+  //         }
+  //       : item
+  //   );
+  //   updateSelectedItems(updatedItems);
+  // };
 
-  const renderAddons = (item) => {
-    if (item.type === 'salad') {
-      return [
-        { name: 'No Addition', price: 0 },
-        { name: 'Grilled Chicken', price: 4 },
-        { name: 'Pepper Chicken', price: 4 },
-        { name: 'Crispy Chicken', price: 4 },
-        { name: 'Seafood', price: 4 },
-        { name: 'Donair', price: 4 },
-      ];
-    } else if (item.type === 'pasta') {
-      return [
-        { name: 'No Addition', price: 0 },
-        { name: 'Meatballs', price: 4 },
-      ];
-    }
-    return [];
-  };
-
-  const [showReceipt, setShowReceipt] = useState(false);
-
-  const clearAllItems = () => {
-    updateSelectedItems([]);
-  };
-  const handleClear = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    clearAllItems();
-    setShowReceipt(false);
-  };
-
-  const handleCheckout = () => {
-    // Scroll to the top
-
-    setShowReceipt(true);
-  };
+  // const renderAddons = (item) => {
+  //   if (item.type === 'salad') {
+  //     return [
+  //       { name: 'No Addition', price: 0 },
+  //       { name: 'Grilled Chicken', price: 4 },
+  //       { name: 'Pepper Chicken', price: 4 },
+  //       { name: 'Crispy Chicken', price: 4 },
+  //       { name: 'Seafood', price: 4 },
+  //       { name: 'Donair', price: 4 },
+  //     ];
+  //   }
+  //   else if (item.type === 'pasta') {
+  //     return [
+  //       { name: 'No Addition', price: 0 },
+  //       { name: 'Meatballs', price: 4 },
+  //     ];
+  //   }
+  //   return [];
+  // };
 
   return (
     <div className="w-full lg:w-2/5 xl:w-1/3 bg-gray-50 p-6 rounded-lg shadow-md">
-      <h2 className="text-3xl font-semibold text-teal-800 mb-6 text-center">
+      <h2 className="text-3xl font-semibold text-blue-900 mb-6 text-center">
         Selected Items
       </h2>
       {selectedItems.length > 0 ? (
@@ -116,7 +101,7 @@ const SelectedItems = ({
               </div>
 
               {/* Addons */}
-              {renderAddons(item).length > 0 && (
+              {/* {renderAddons(item).length > 0 && (
                 <div className="w-full mt-2">
                   <label className="text-sm font-semibold text-gray-700 block mb-2">
                     {item.type === 'salad' ? 'Add Protein:' : 'Add Meatballs:'}
@@ -125,7 +110,7 @@ const SelectedItems = ({
                     onChange={(e) =>
                       handleAddonChange(item.key, JSON.parse(e.target.value))
                     }
-                    className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-teal-300 transition ease-in-out w-full"
+                    className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-300 transition ease-in-out w-full"
                   >
                     <option disabled value="">
                       Select an addition
@@ -137,7 +122,7 @@ const SelectedItems = ({
                     ))}
                   </select>
                 </div>
-              )}
+              )} */}
             </li>
           ))}
         </ul>
@@ -146,14 +131,14 @@ const SelectedItems = ({
       )}
 
       {/* Total and Savings */}
-      <div className="mt-8 p-6 bg-gradient-to-r from-teal-100 to-teal-200 rounded-lg shadow-md border border-teal-300">
-        <div className="flex justify-between items-center text-xl font-bold text-teal-700">
+      <div className="mt-8 p-6 bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg shadow-md border border-blue-300">
+        <div className="flex justify-between items-center text-xl font-bold text-blue-700">
           <span>Total:</span>
-          <span className="text-teal-900">${total}</span>
+          <span className="text-blue-900">${total}</span>
         </div>
 
         {savings > 0 && (
-          <div className="mt-4 p-4 bg-teal-50 border-l-4 border-teal-400 rounded-md text-teal-700">
+          <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-400 rounded-md text-blue-700">
             <p className="text-base font-medium">
               🎉 Great! You saved{' '}
               <span className="font-semibold">${savings.toFixed(2)}</span>
@@ -180,8 +165,8 @@ const SelectedItems = ({
               ''
             ) : (
               <button
-                onClick={handleCheckout}
-                className="bg-teal-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-teal-700 transition transform hover:scale-105"
+                onClick={() => setShowReceipt(true)}
+                className="bg-blue-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-blue-700 transition transform hover:scale-105"
               >
                 Show Receipt
               </button>
@@ -189,8 +174,8 @@ const SelectedItems = ({
 
             {/* Checkout Button */}
             <button
-              onClick={handleClear}
-              className="bg-teal-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-teal-700 transition transform hover:scale-105"
+              onClick={handleCheckout}
+              className="bg-blue-600 text-white p-4 w-full md:w-64 rounded-lg hover:bg-blue-700 transition transform hover:scale-105"
             >
               Checkout
             </button>
@@ -208,6 +193,9 @@ SelectedItems.propTypes = {
   deleteItemFromBill: PropTypes.func.isRequired,
   calculateTotal: PropTypes.func.isRequired,
   updateSelectedItems: PropTypes.func.isRequired,
+  handleCheckout: PropTypes.func.isRequired,
+  showReceipt: PropTypes.bool.isRequired,
+  setShowReceipt: PropTypes.func.isRequired,
 };
 
 export default SelectedItems;

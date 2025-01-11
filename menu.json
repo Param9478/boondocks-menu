@@ -2,6 +2,7 @@
   "menu": [
     {
       "category": "Starters",
+      "index": 1,
       "items": [
         {
           "name": "Wings",
@@ -126,83 +127,151 @@
     },
     {
       "category": "Salads",
+      "index": 2,
       "items": [
         {
           "name": "House Salad",
-          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "description": "Add chicken, seafood (shrimp & crab), or donair for an additional $4.00",
           "type": "salad",
           "options": [
             {
               "name": "Full Order",
               "price": 13.0
             },
-            { "name": "1/2 Order", "price": 11.0 }
+            {
+              "name": "1/2 Order",
+              "price": 11.0
+            },
+            {
+              "name": "Full Order with Add-on",
+              "price": 17.0
+            },
+            {
+              "name": "1/2 Order with Add-on",
+              "price": 15.0
+            }
           ]
         },
         {
           "name": "Caesar Salad",
-          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "description": "Add chicken, seafood (shrimp & crab), or donair for an additional $4.00",
           "type": "salad",
           "options": [
             {
               "name": "Full Order",
               "price": 13.0
             },
-            { "name": "1/2 Order", "price": 11.0 }
+            {
+              "name": "1/2 Order",
+              "price": 11.0
+            },
+            {
+              "name": "Full Order with Add-on",
+              "price": 17.0
+            },
+            {
+              "name": "1/2 Order with Add-on",
+              "price": 15.0
+            }
           ]
         },
         {
           "name": "Greek Salad",
-          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "description": "Add chicken, seafood (shrimp & crab), or donair for an additional $4.00",
           "type": "salad",
           "options": [
             {
               "name": "Full Order",
               "price": 13.0
             },
-            { "name": "1/2 Order", "price": 11.0 }
+            {
+              "name": "1/2 Order",
+              "price": 11.0
+            },
+            {
+              "name": "Full Order with Add-on",
+              "price": 17.0
+            },
+            {
+              "name": "1/2 Order with Add-on",
+              "price": 15.0
+            }
           ]
         },
         {
           "name": "Fattoush Salad",
-          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "description": "Add chicken, seafood (shrimp & crab), or donair for an additional $4.00",
           "type": "salad",
           "options": [
             {
               "name": "Full Order",
               "price": 13.0
             },
-            { "name": "1/2 Order", "price": 11.0 }
+            {
+              "name": "1/2 Order",
+              "price": 11.0
+            },
+            {
+              "name": "Full Order with Add-on",
+              "price": 17.0
+            },
+            {
+              "name": "1/2 Order with Add-on",
+              "price": 15.0
+            }
           ]
         },
         {
           "name": "Zesty Calamari Salad",
-          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "description": "Add chicken, seafood (shrimp & crab), or donair for an additional $4.00",
           "type": "salad",
           "options": [
             {
               "name": "Full Order",
               "price": 13.0
             },
-            { "name": "1/2 Order", "price": 11.0 }
+            {
+              "name": "1/2 Order",
+              "price": 11.0
+            },
+            {
+              "name": "Full Order with Add-on",
+              "price": 17.0
+            },
+            {
+              "name": "1/2 Order with Add-on",
+              "price": 15.0
+            }
           ]
         },
         {
           "name": "Cranberry Pecan Salad",
-          "description": "add chicken or seafood (shrimp & crab) or donair $4.00",
+          "description": "Add chicken, seafood (shrimp & crab), or donair for an additional $4.00",
           "type": "salad",
           "options": [
             {
               "name": "Full Order",
               "price": 13.0
             },
-            { "name": "1/2 Order", "price": 11.0 }
+            {
+              "name": "1/2 Order",
+              "price": 11.0
+            },
+            {
+              "name": "Full Order with Add-on",
+              "price": 17.0
+            },
+            {
+              "name": "1/2 Order with Add-on",
+              "price": 15.0
+            }
           ]
         }
       ]
     },
     {
       "category": "Calzones",
+      "index": 3,
       "items": [
         {
           "name": "Meatza Pizza Calzone",
@@ -238,36 +307,176 @@
     },
     {
       "category": "Pastas",
+      "index": 4,
       "items": [
         {
           "name": "Home Style Baked Lasagna",
           "description": "topped with meat sauce baked with cheese. Top it off with meatballs for an additional $3.00",
-          "price": 16.0,
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 16.0
+            },
+            {
+              "name": "1/2 Order",
+              "price": 13.0
+            },
+            {
+              "name": "Full Order with Meatballs",
+              "price": 20.0
+            },
+            {
+              "name": "1/2 Order with Meatballs",
+              "price": 17.0
+            }
+          ],
           "type": "pasta"
         },
         {
           "name": "Spaghetti",
           "description": "topped with meat sauce baked with cheese. Top it off with meatballs for an additional $3.00",
-          "price": 16.0,
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 16.0
+            },
+            {
+              "name": "1/2 Order",
+              "price": 13.0
+            },
+            {
+              "name": "Full Order with Meatballs",
+              "price": 20.0
+            },
+            {
+              "name": "1/2 Order with Meatballs",
+              "price": 17.0
+            }
+          ],
           "type": "pasta"
         },
         {
           "name": "Baked Seafood Lasagna",
           "description": "served with our alfredo sauce, crab and shrimp",
-          "price": 18.0,
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 18.0
+            },
+            {
+              "name": "1/2 Order",
+              "price": 15.0
+            }
+          ],
           "type": "pasta"
         },
         {
           "name": "Chicken Mushroom Fettuccini",
           "description": "served with our alfredo sauce",
-          "price": 18.0,
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 18.0
+            },
+            {
+              "name": "1/2 Order",
+              "price": 15.0
+            }
+          ],
           "type": "pasta"
         },
         {
           "name": "Creamy Vegetarian Spaghetti",
           "description": "sauted mushrooms, red onions, green peppers and red peppers in an alfredo marinara sauce laid over a bed of spaghetti",
-          "price": 18.0,
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 18.0
+            },
+            {
+              "name": "1/2 Order",
+              "price": 15.0
+            }
+          ],
           "type": "pasta"
+        }
+      ]
+    },
+    {
+      "category": "Burgers",
+      "index": 5,
+      "items": [
+        {
+          "name": "Boondocks Classic Burger",
+          "description": "Our homemade relish, onions, pickles, lettuce, tomatoes, bacon, and cheddar cheese",
+          "options": [
+            {
+              "name": "Single",
+              "price": 15.0
+            },
+            {
+              "name": "Double",
+              "price": 17.0
+            }
+          ],
+          "type": "burgers"
+        },
+        {
+          "name": "Bacon Mozza Cheddar Burger (BMC)",
+          "description": "A thick and juicy beef patty topped with mozzarella and cheddar cheese, bacon, lettuce and tomato with our homemade white sauce",
+          "options": [
+            {
+              "name": "Single",
+              "price": 15.0
+            },
+            {
+              "name": "Double",
+              "price": 17.0
+            }
+          ],
+          "type": "burgers"
+        },
+        {
+          "name": "Mushroom Cheese Burger",
+          "description": "Our homemade mushroom sauce topped with sautéed mushrooms and cheddar cheese",
+          "options": [
+            {
+              "name": "Single",
+              "price": 15.0
+            },
+            {
+              "name": "Double",
+              "price": 17.0
+            }
+          ],
+          "type": "burgers"
+        },
+        {
+          "name": "Smokey Onion Ring Burger",
+          "description": "Bold BBQ sauce, mozza-cheddar, lettuce, tomato and onion rings stacked high on a delicious patty",
+          "options": [
+            {
+              "name": "Single",
+              "price": 15.0
+            },
+            {
+              "name": "Double",
+              "price": 17.0
+            }
+          ],
+          "type": "burgers"
+        },
+        {
+          "name": "Crispy Chicken Burger",
+          "description": "Tender on the inside, crisp on the outside. Served with our homemade white sauce, lettuce and tomatoes",
+          "price": 15.0,
+          "type": "burgers"
+        },
+        {
+          "name": "Grilled Chicken Burger",
+          "description": "Grilled chicken breast, lettuce, tomato and mayo all on a toasted bun",
+          "price": 15.0,
+          "type": "burgers"
         }
       ]
     }
