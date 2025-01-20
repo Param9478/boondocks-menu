@@ -1,32 +1,44 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { FaPlus, FaMinus, FaTrashAlt } from 'react-icons/fa';
 
 const MenuItem = ({
   item,
-  selectedOptions,
-  setSelectedOptions,
   addItemToBill,
   removeItemFromBill,
   deleteItemFromBill,
   getItemQuantity,
 }) => {
-  const itemKey = item.options
-    ? `${item.name}-${selectedOptions[item.name]?.name}`
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedToppings, setSelectedToppings] = useState([]);
+  const itemKey = selectedSize
+    ? `${item.name}-${selectedSize?.name}`
     : item.name;
 
   const quantity = getItemQuantity(itemKey);
 
-  const handleOptionChange = (e) => {
-    const selectedOption = JSON.parse(e.target.value);
-    setSelectedOptions((prev) => ({
-      ...prev,
-      [item.name]: selectedOption,
-    }));
-    addItemToBill(item, selectedOption);
+  const handleSizeChange = (e) => {
+    const size = JSON.parse(e.target.value);
+    setSelectedSize(size);
+    addItemToBill(item, size);
+  };
+
+  const handleToppingChange = (e) => {
+    const topping = e.target.value;
+    setSelectedToppings((prev) =>
+      prev.includes(topping)
+        ? prev.filter((t) => t !== topping)
+        : [...prev, topping].slice(0, 4)
+    );
   };
 
   const handleAddToCart = () => {
-    addItemToBill(item, selectedOptions[item.name]);
+    const priceWithToppings =
+      selectedSize ? selectedSize.price + Math.max(0, selectedToppings.length - 4) : item.price;
+    addItemToBill(
+      { ...item, price: priceWithToppings },
+      selectedSize ? { size: selectedSize, toppings: selectedToppings } : null
+    );
   };
 
   return (
@@ -37,18 +49,55 @@ const MenuItem = ({
       </p>
       {item.options && (
         <select
-          onChange={handleOptionChange}
+          onChange={handleSizeChange}
           className="mt-4 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
         >
           <option value="">Select an option</option>
           {item.options.map((option, i) => (
             <option key={i} value={JSON.stringify(option)}>
-              {option.name} - ${option.price}
+              {option.name} - ${option.price?.toFixed(2)}
             </option>
           ))}
         </select>
       )}
-      {!item.options && (
+      {item.sizes && (
+        <select
+          onChange={handleSizeChange}
+          className="mt-4 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-purple-300"
+        >
+          <option value="">Select a size</option>
+          {item.sizes.map((size, i) => (
+            <option key={i} value={JSON.stringify(size)}>
+              {size.name} - ${size.price?.toFixed(2)}
+            </option>
+          ))}
+        </select>
+      )}
+      {item.toppings && (
+        <div className="mt-4">
+          <label className="text-gray-700">Select Toppings (Up to 4):</label>
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            {item.toppings.map((topping, i) => (
+              <div key={i} className="flex items-center">
+                <input
+                  type="checkbox"
+                  value={topping}
+                  onChange={handleToppingChange}
+                  className="mr-2"
+                  checked={selectedToppings.includes(topping)}
+                />
+                <label className="text-gray-700">{topping}</label>
+              </div>
+            ))}
+          </div>
+          {selectedToppings.length > 4 && (
+            <p className="text-gray-700 mt-2">
+              Additional toppings cost $1 each.
+            </p>
+          )}
+        </div>
+      )}
+      {!item.sizes && !item.toppings && !item.options && (
         <p className="text-gray-900 font-bold mt-4">${item.price}</p>
       )}
       <div className="mt-4 flex items-center justify-between">
@@ -85,11 +134,11 @@ const MenuItem = ({
             <button
               onClick={handleAddToCart}
               className={`text-white px-4 py-2 rounded-md transition ${
-                item.options && !selectedOptions[item.name]
+                (item.sizes && !selectedSize) || (item.options && !selectedSize)
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-green-500 hover:bg-green-600'
               }`}
-              disabled={item.options && !selectedOptions[item.name]}
+              disabled={(item.sizes && !selectedSize) || (item.options && !selectedSize)}
             >
               Add to Cart
             </button>
@@ -102,8 +151,6 @@ const MenuItem = ({
 
 MenuItem.propTypes = {
   item: PropTypes.object.isRequired,
-  selectedOptions: PropTypes.object.isRequired,
-  setSelectedOptions: PropTypes.func.isRequired,
   addItemToBill: PropTypes.func.isRequired,
   removeItemFromBill: PropTypes.func.isRequired,
   deleteItemFromBill: PropTypes.func.isRequired,

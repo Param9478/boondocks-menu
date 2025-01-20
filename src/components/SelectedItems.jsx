@@ -10,42 +10,39 @@ const SelectedItems = ({
   calculateTotal,
   handleCheckout,
   showReceipt,
+  updateSelectedItems,
   setShowReceipt,
 }) => {
   const { total, savings } = calculateTotal(selectedItems);
 
-  // const handleAddonChange = (itemKey, newAddon) => {
-  //   const updatedItems = selectedItems.map((item) =>
-  //     item.key === itemKey
-  //       ? {
-  //           ...item,
-  //           addon: newAddon,
-  //           price: item.price - (item.addon?.price || 0) + newAddon.price,
-  //         }
-  //       : item
-  //   );
-  //   updateSelectedItems(updatedItems);
-  // };
+  const handleAddonChange = (itemKey, newAddon) => {
+    const updatedItems = selectedItems.map((item) =>
+      item.key === itemKey
+        ? {
+            ...item,
+            addon: newAddon,
+            price: item.price - (item.addon?.price || 0) + newAddon.price,
+          }
+        : item
+    );
+    updateSelectedItems(updatedItems);
+  };
 
-  // const renderAddons = (item) => {
-  //   if (item.type === 'salad') {
-  //     return [
-  //       { name: 'No Addition', price: 0 },
-  //       { name: 'Grilled Chicken', price: 4 },
-  //       { name: 'Pepper Chicken', price: 4 },
-  //       { name: 'Crispy Chicken', price: 4 },
-  //       { name: 'Seafood', price: 4 },
-  //       { name: 'Donair', price: 4 },
-  //     ];
-  //   }
-  //   else if (item.type === 'pasta') {
-  //     return [
-  //       { name: 'No Addition', price: 0 },
-  //       { name: 'Meatballs', price: 4 },
-  //     ];
-  //   }
-  //   return [];
-  // };
+  const renderAddons = (item) => {
+    if (
+      item?.options?.some(
+        (option) => option.name === 'With Side' && item.option === 'With Side'
+      )
+    ) {
+      return [
+        { name: 'Fries', price: 0 },
+        { name: 'Caesar Salad, Cactus Cut Potatoes, or Onion Rings', price: 2 },
+        { name: 'Poutine, Greek Salad, or Fattoush Salad', price: 4 },
+        { name: 'No Side', price: -5 },
+      ];
+    }
+    return [];
+  };
 
   return (
     <div className="w-full lg:w-2/5 xl:w-1/3 bg-gray-50 p-6 rounded-lg shadow-md">
@@ -101,10 +98,10 @@ const SelectedItems = ({
               </div>
 
               {/* Addons */}
-              {/* {renderAddons(item).length > 0 && (
+              {item.option === 'With Side' && (
                 <div className="w-full mt-2">
                   <label className="text-sm font-semibold text-gray-700 block mb-2">
-                    {item.type === 'salad' ? 'Add Protein:' : 'Add Meatballs:'}
+                    Add Side:
                   </label>
                   <select
                     onChange={(e) =>
@@ -112,9 +109,7 @@ const SelectedItems = ({
                     }
                     className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-300 transition ease-in-out w-full"
                   >
-                    <option disabled value="">
-                      Select an addition
-                    </option>
+                    <option value="">Select a side</option>
                     {renderAddons(item).map((addon, i) => (
                       <option key={i} value={JSON.stringify(addon)}>
                         {addon.name} - ${addon.price.toFixed(2)}
@@ -122,7 +117,7 @@ const SelectedItems = ({
                     ))}
                   </select>
                 </div>
-              )} */}
+              )}
             </li>
           ))}
         </ul>

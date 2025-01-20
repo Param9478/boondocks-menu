@@ -30,7 +30,7 @@
           "description": "",
           "options": [
             { "name": "No Side", "price": 9.0 },
-            { "name": "With Side", "price": 13.0 }
+            { "name": "With Side", "price": 14.0 }
           ]
         },
         {
@@ -276,35 +276,51 @@
         {
           "name": "Meatza Pizza Calzone",
           "description": "ham, pepperoni, bacon, italian sausage cheese & pizza sauce",
-          "price": 12.0,
+          "options": [
+            { "name": "No Side", "price": 12.0 },
+            { "name": "With Side", "price": 17.0 }
+          ],
           "type": "calzone"
         },
         {
           "name": "Bacon Cheese Burger Calzone",
           "description": "bacon, beef, mushroom, mozza-cheddar cheese & pizza sauce",
-          "price": 12.0,
+          "options": [
+            { "name": "No Side", "price": 12.0 },
+            { "name": "With Side", "price": 17.0 }
+          ],
           "type": "calzone"
         },
         {
           "name": "Chicken Calzone",
           "description": "grilled chicken, onions, green pepper, mozza cheese & dill sauce",
-          "price": 12.0,
+          "options": [
+            { "name": "No Side", "price": 12.0 },
+            { "name": "With Side", "price": 17.0 }
+          ],
           "type": "calzone"
         },
         {
           "name": "Buffalo Chicken Calzone",
           "description": "chicken breast tossed in frank's, bacon, onions & tomatoes with a ranch base",
-          "price": 12.0,
+          "options": [
+            { "name": "No Side", "price": 12.0 },
+            { "name": "With Side", "price": 17.0 }
+          ],
           "type": "calzone"
         },
         {
           "name": "Donair Calzone",
           "description": "spiced beef donair, caesar sauce, onions, tomatoes & mozza-cheddar",
-          "price": 12.0,
+          "options": [
+            { "name": "No Side", "price": 12.0 },
+            { "name": "With Side", "price": 17.0 }
+          ],
           "type": "calzone"
         }
       ]
     },
+
     {
       "category": "Pastas",
       "index": 4,
@@ -479,6 +495,382 @@
           "type": "burgers"
         }
       ]
+    },
+    {
+      "category": "Handhelds",
+      "index": 6,
+      "items": [
+        {
+          "name": "Soup & Sandwich",
+          "description": "Roast Beef, Turkey, BLT",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 10.0
+            },
+            {
+              "name": "With Side",
+              "price": 15.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Club House Sandwich",
+          "description": "Turkey, Ham, Bacon, Lettuce, Tomatoes and Cheese",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
+            },
+            {
+              "name": "With Side",
+              "price": 16.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Hot Turkey Roast Beef",
+          "description": "Oven roasted over a crisp Texas toast and smothered with gravy",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 12.0
+            },
+            {
+              "name": "With Side",
+              "price": 17.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Chipotle French Dip",
+          "description": "Oven roasted beef, sauteed onions, chipotle mayo and mozza-cheddar piled high between grilled buttered Texas toast",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
+            },
+            {
+              "name": "With Side",
+              "price": 16.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Boonies Cheesesteak",
+          "description": "Thinly sliced roast beef, mozza-cheddar, sauteed onions, mushrooms and green peppers on a toasted loaf. Served with au jus on the side",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 12.0
+            },
+            {
+              "name": "With Side",
+              "price": 17.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Beef Donair",
+          "description": "Thinly sliced Donair meat, tomatoes, onions and lettuce wrapped up in a pita with Caesar, Dill or East Coast Sweet Sauce",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 10.0
+            },
+            {
+              "name": "With Side",
+              "price": 15.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Beef Dip",
+          "description": "Thinly sliced roast beef piled high on a toasted loaf, served with au jus on the side",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
+            },
+            {
+              "name": "With Side",
+              "price": 16.0
+            },
+            {
+              "name": "With Cheese",
+              "price": 17.0
+            },
+            {
+              "name": "Italian Loaf",
+              "description": "Pepperoni, ham, italian sausage, onions, mozzarella and our pizza sauce baked on a delicious loaf",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 11.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 16.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Buffalo Chicken Sandwich",
+              "description": "Seasoned fried chicken breast tossed in Frank's Red Hot and baked on a garlic loaf with mozza-cheddar",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 12.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 17.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Seafood Melt",
+              "description": "A creamy and rich blend of shrimp and crab baked with mozzarella on a garlic loaf",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 11.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 16.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Chipotle Chicken Club",
+              "description": "Grilled chicken breast, bacon, cheese and chipotle mayo baked on our classic loaf then stuffed with lettuce and tomato",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 12.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 17.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Fried Fish PO'Boy",
+              "description": "Two crisp pollock fillets laid across a toasted loaf with tartar sauce, red onion, lettuce and tomato",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 12.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 17.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Chicken Dill Pitta",
+              "description": "Crisp tender chicken wrapped up in a pita with our special dill sauce",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 10.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 15.0
+                },
+                {
+                  "name": "Add lettuce and tomato",
+                  "price": 16.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Crispy Chicken Wrap",
+              "description": "Crisp fried chicken, ranch, lettuce, tomatoes and mozza-cheddar wrapped in a flour tortilla",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 11.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 16.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Turkey Club Wrap",
+              "description": "This cold wrap is stuffed with oven roasted turkey, bacon, lettuce, tomatoes, cheese and ranch",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 11.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 16.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Chicken Fajita Wrap",
+              "description": "A flour tortilla stuffed with peppered chicken, sauteed onions, peppers, salsa and served with our sour cream",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 12.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 17.0
+                }
+              ],
+              "type": "Handhelds"
+            },
+            {
+              "name": "Greek Veggie Wrap",
+              "description": "A wrap loaded with lettuce, tomato, peppers, red onions, cucumbers, feta cheese and dill sauce",
+              "options": [
+                {
+                  "name": "No Side",
+                  "price": 10.0
+                },
+                {
+                  "name": "With Side",
+                  "price": 15.0
+                },
+                {
+                  "name": "Add grilled Chicken",
+                  "price": 18.0
+                }
+              ],
+              "type": "Handhelds"
+            }
+          ],
+
+          "type": "Handhelds"
+        }
+      ]
+    },
+    {
+      "category": "Entrees And Steaks",
+      "index": 7,
+      "items": [
+        {
+          "name": "Chicken Stir Fry",
+          "description": "Chicken Sauteed with carrots, peas, peppers, broccoli, corn and water chestnuts with our own stir-fry sauce. Served with our homemade rice",
+          "price": 24.0,
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "Jumbo Fantail Shrimp",
+          "description": "Jumbo fantail shrimp breaded and fried golden brown",
+          "price": 21.0,
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "Fish & Chips",
+          "description": "3 tasty fish sticks lightly battered and deep fried, served with our Boonies French Fries",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 22.0
+            },
+            {
+              "name": "2 Pcs Fish & a Side (excluded starter)",
+              "price": 16.0
+            }
+          ],
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "8.5OZ Haddock",
+          "description": "Cooks up light and crispy, while the battered premium cold water fish is moist and mild flavoured",
+          "price": 23.0,
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "Chicken Parmigiana",
+          "description": "A tender chicken breast fried then grilled until golden brown. Topped with our homemade tomato sauce and mozzarella then baked to perfection",
+          "price": 24.0,
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "Veal Cutlets",
+          "description": "2 tender breaded cutlets fried and topped with gravy",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 21.0
+            },
+            {
+              "name": "1 Cutlet & a Side (excluded starter)",
+              "price": 15.0
+            }
+          ],
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "8OZ Hamburger Steak",
+          "description": "Grilled and topped with sauteed onions and mushrooms then smothered in homemade gravy",
+          "options": [
+            {
+              "name": "Full Order",
+              "price": 22.0
+            },
+            {
+              "name": "5OZ Patty & a Side (excluded starter)",
+              "price": 15.0
+            }
+          ],
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "Top Sirloin Steak",
+          "description": "Seasoned and charbroiled the way you like",
+          "options": [
+            {
+              "name": "8OZ",
+              "price": 26.0
+            },
+            {
+              "name": "10OZ",
+              "price": 30.0
+            }
+          ],
+          "type": "entrees and steaks"
+        },
+        {
+          "name": "Pepper Steak",
+          "description": "Tender chunks of a beef sauteed with mushrooms, green peppers, onions, tomatoes with our own tasty tangy sauce",
+          "price": 30,
+          "type": "entrees and steaks"
+        }
+      ]
     }
+  ],
+  "sides": [
+    { "name": "No side", "price": 0 },
+    { "name": "Fries", "price": 5 },
+    { "name": "Poutine", "price": 9 },
+    { "name": "Salad", "price": 7 }
   ]
 }
