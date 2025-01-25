@@ -339,11 +339,11 @@
             },
             {
               "name": "Full Order with Meatballs",
-              "price": 20.0
+              "price": 19.0
             },
             {
               "name": "1/2 Order with Meatballs",
-              "price": 17.0
+              "price": 16.0
             }
           ],
           "type": "pasta"
@@ -362,11 +362,11 @@
             },
             {
               "name": "Full Order with Meatballs",
-              "price": 20.0
+              "price": 19.0
             },
             {
               "name": "1/2 Order with Meatballs",
-              "price": 17.0
+              "price": 16.0
             }
           ],
           "type": "pasta"
@@ -605,167 +605,165 @@
             {
               "name": "With Cheese",
               "price": 17.0
+            }
+          ]
+        },
+        {
+          "name": "Italian Loaf",
+          "description": "Pepperoni, ham, italian sausage, onions, mozzarella and our pizza sauce baked on a delicious loaf",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
             },
             {
-              "name": "Italian Loaf",
-              "description": "Pepperoni, ham, italian sausage, onions, mozzarella and our pizza sauce baked on a delicious loaf",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 11.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 16.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Buffalo Chicken Sandwich",
-              "description": "Seasoned fried chicken breast tossed in Frank's Red Hot and baked on a garlic loaf with mozza-cheddar",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 12.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 17.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Seafood Melt",
-              "description": "A creamy and rich blend of shrimp and crab baked with mozzarella on a garlic loaf",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 11.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 16.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Chipotle Chicken Club",
-              "description": "Grilled chicken breast, bacon, cheese and chipotle mayo baked on our classic loaf then stuffed with lettuce and tomato",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 12.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 17.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Fried Fish PO'Boy",
-              "description": "Two crisp pollock fillets laid across a toasted loaf with tartar sauce, red onion, lettuce and tomato",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 12.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 17.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Chicken Dill Pitta",
-              "description": "Crisp tender chicken wrapped up in a pita with our special dill sauce",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 10.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 15.0
-                },
-                {
-                  "name": "Add lettuce and tomato",
-                  "price": 16.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Crispy Chicken Wrap",
-              "description": "Crisp fried chicken, ranch, lettuce, tomatoes and mozza-cheddar wrapped in a flour tortilla",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 11.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 16.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Turkey Club Wrap",
-              "description": "This cold wrap is stuffed with oven roasted turkey, bacon, lettuce, tomatoes, cheese and ranch",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 11.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 16.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Chicken Fajita Wrap",
-              "description": "A flour tortilla stuffed with peppered chicken, sauteed onions, peppers, salsa and served with our sour cream",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 12.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 17.0
-                }
-              ],
-              "type": "Handhelds"
-            },
-            {
-              "name": "Greek Veggie Wrap",
-              "description": "A wrap loaded with lettuce, tomato, peppers, red onions, cucumbers, feta cheese and dill sauce",
-              "options": [
-                {
-                  "name": "No Side",
-                  "price": 10.0
-                },
-                {
-                  "name": "With Side",
-                  "price": 15.0
-                },
-                {
-                  "name": "Add grilled Chicken",
-                  "price": 18.0
-                }
-              ],
-              "type": "Handhelds"
+              "name": "With Side",
+              "price": 16.0
             }
           ],
-
+          "type": "Handhelds"
+        },
+        {
+          "name": "Buffalo Chicken Sandwich",
+          "description": "Seasoned fried chicken breast tossed in Frank's Red Hot and baked on a garlic loaf with mozza-cheddar",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 12.0
+            },
+            {
+              "name": "With Side",
+              "price": 17.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Seafood Melt",
+          "description": "A creamy and rich blend of shrimp and crab baked with mozzarella on a garlic loaf",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
+            },
+            {
+              "name": "With Side",
+              "price": 16.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Chipotle Chicken Club",
+          "description": "Grilled chicken breast, bacon, cheese and chipotle mayo baked on our classic loaf then stuffed with lettuce and tomato",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 12.0
+            },
+            {
+              "name": "With Side",
+              "price": 17.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Fried Fish PO'Boy",
+          "description": "Two crisp pollock fillets laid across a toasted loaf with tartar sauce, red onion, lettuce and tomato",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 12.0
+            },
+            {
+              "name": "With Side",
+              "price": 17.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Chicken Dill Pitta",
+          "description": "Crisp tender chicken wrapped up in a pita with our special dill sauce",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 10.0
+            },
+            {
+              "name": "With Side",
+              "price": 15.0
+            },
+            {
+              "name": "Add lettuce and tomato",
+              "price": 16.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Crispy Chicken Wrap",
+          "description": "Crisp fried chicken, ranch, lettuce, tomatoes and mozza-cheddar wrapped in a flour tortilla",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
+            },
+            {
+              "name": "With Side",
+              "price": 16.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Turkey Club Wrap",
+          "description": "This cold wrap is stuffed with oven roasted turkey, bacon, lettuce, tomatoes, cheese and ranch",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 11.0
+            },
+            {
+              "name": "With Side",
+              "price": 16.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Chicken Fajita Wrap",
+          "description": "A flour tortilla stuffed with peppered chicken, sauteed onions, peppers, salsa and served with our sour cream",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 12.0
+            },
+            {
+              "name": "With Side",
+              "price": 17.0
+            }
+          ],
+          "type": "Handhelds"
+        },
+        {
+          "name": "Greek Veggie Wrap",
+          "description": "A wrap loaded with lettuce, tomato, peppers, red onions, cucumbers, feta cheese and dill sauce",
+          "options": [
+            {
+              "name": "No Side",
+              "price": 10.0
+            },
+            {
+              "name": "With Side",
+              "price": 15.0
+            },
+            {
+              "name": "Add grilled Chicken",
+              "price": 18.0
+            }
+          ],
           "type": "Handhelds"
         }
       ]
