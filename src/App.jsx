@@ -63,28 +63,62 @@ const App = () => {
   };
 
   const addItemToBill = (item, option) => {
-    const key = option ? `${item.name}-${option.name}` : item.name;
-    const existingItemIndex = selectedItems.findIndex(
-      (selectedItem) => selectedItem.key === key
-    );
+    // For items with sides, always add as a new entry with a unique identifier
+    if (option && option.name === 'With Side') {
+      // Create a unique key with timestamp to ensure uniqueness
+      const uniqueKey = `${item.name}-${option.name}-${Date.now()}`;
 
-    if (existingItemIndex !== -1) {
-      const updatedItems = selectedItems.map((selectedItem, index) => {
-        if (index === existingItemIndex) {
-          return { ...selectedItem, quantity: selectedItem.quantity + 1 };
-        }
-        return selectedItem;
-      });
-      setSelectedItems(updatedItems);
-      toast.success(`${item.name} quantity increased!`);
-    } else {
       const newItem = {
         ...item,
-        price: option ? option.price : item.price,
+        price: option.price,
         quantity: 1,
-        key,
-        option: option ? option.name : null,
+        key: uniqueKey,
+        option: option.name,
       };
+
+      setSelectedItems([...selectedItems, newItem]);
+      toast.success(`${item.name} added to cart!`);
+    } else {
+      // For non-side items, keep the existing logic of incrementing quantity
+      const key = option ? `${item.name}-${option.name}` : item.name;
+      const existingItemIndex = selectedItems.findIndex(
+        (selectedItem) => selectedItem.key === key
+      );
+
+      if (existingItemIndex !== -1) {
+        const updatedItems = selectedItems.map((selectedItem, index) => {
+          if (index === existingItemIndex) {
+            return { ...selectedItem, quantity: selectedItem.quantity + 1 };
+          }
+          return selectedItem;
+        });
+        setSelectedItems(updatedItems);
+        toast.success(`${item.name} quantity increased!`);
+      } else {
+        const newItem = {
+          ...item,
+          price: option ? option.price : item.price,
+          quantity: 1,
+          key,
+          option: option ? option.name : null,
+        };
+        setSelectedItems([...selectedItems, newItem]);
+        toast.success(`${item.name} added to cart!`);
+      }
+    }
+    // In addItemToBill function, add basePrice to items with sides
+    if (option && option.name === 'With Side') {
+      const uniqueKey = `${item.name}-${option.name}-${Date.now()}`;
+
+      const newItem = {
+        ...item,
+        basePrice: option.price, // Store the base price for later calculations
+        price: option.price,
+        quantity: 1,
+        key: uniqueKey,
+        option: option.name,
+      };
+
       setSelectedItems([...selectedItems, newItem]);
       toast.success(`${item.name} added to cart!`);
     }

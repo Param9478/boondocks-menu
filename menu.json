@@ -863,6 +863,67 @@
           "type": "entrees and steaks"
         }
       ]
+    },
+    {
+      "category": "Pizzas",
+      "index": 8,
+      "items": [
+        {
+          "name": "Pizza",
+          "type": "pizza",
+          "description": "Customize your pizza step-by-step.",
+          "sizes": [
+            { "name": "Small", "price": 9.0 },
+            { "name": "Medium", "price": 14.0 },
+            { "name": "Large", "price": 17.0 },
+            { "name": "Extra Large", "price": 20.0 },
+            { "name": "Giant", "price": 28.0 }
+          ],
+          "toppings": [
+            { "name": "Cheese", "price": 0.0 },
+            { "name": "1 Topping", "price": 1.0 },
+            { "name": "2 Toppings", "price": 2.0 },
+            { "name": "3 Toppings", "price": 3.0 },
+            { "name": "4 Toppings", "price": 4.0 },
+            { "name": "Gourmet Pizza", "price": 5.0 }
+          ],
+          "extra_cheese_pricing": {
+            "Medium": 1.0,
+            "Large": 2.0,
+            "Extra Large": 3.0,
+            "Giant": 5.0
+          }
+        }
+      ]
+    },
+    {
+      "category": "Pizza Deals",
+      "index": 9,
+      "items": [
+        {
+          "name": "Wow Deal",
+          "type": "deal",
+          "description": "Two large (14\") pizzas, one order of garlic bread, and a 2L soda",
+          "price": 39.99,
+          "options": [
+            { "name": "Classic Pepperoni & Margherita", "price": 0.0 },
+            { "name": "Supreme & Hawaiian", "price": 3.0 },
+            { "name": "Meat Lovers & Veggie", "price": 3.0 },
+            { "name": "Custom (Additional charges may apply)", "price": 5.0 }
+          ]
+        },
+
+        {
+          "name": "Great Savings",
+          "type": "deal",
+          "description": "Two extra-large (16\") pizzas, 20 wings, and two 2L sodas",
+          "price": 54.99,
+          "options": [
+            { "name": "Classic Combo", "price": 0.0 },
+            { "name": "Premium Combo (Supreme, Meat Lovers)", "price": 5.0 }
+          ]
+        }
+      ]
     }
   ],
   "sides": [
